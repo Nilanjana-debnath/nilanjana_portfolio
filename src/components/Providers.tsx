@@ -4,7 +4,7 @@ import { ChatProvider } from "@/contexts/ChatContext";
 import { ThemeProvider, useTheme } from "next-themes";
 import React from "react";
 import { Toaster } from "sonner";
-// import Chat from "./Chat";
+import Chat from "./Chat";
 import AIChatButton from "./AIChatButton";
 
 
@@ -18,7 +18,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     >
       <ChatProvider>
         {children}
-        {/* <Chat /> */}
+        <Chat />
         <AIChatButton />
       </ChatProvider>
       <ToastProvider />
