@@ -1,0 +1,19 @@
+{
+
+  "techstacks": [
+    {
+      "category": "Programming",
+      "desc": "",
+      "tags": [
+        "Python"
+      ],
+      "links": [
+        {
+          "name": "Python",
+          "href": "https://www.python.org/",
+          "icon": "github"
+        }
+      ]
+    }
+  ]
+}
