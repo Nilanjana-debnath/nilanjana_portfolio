@@ -1,3 +1,4 @@
+import { FormEvent } from "react";
 import { useChatbot } from "@/contexts/ChatContext";
 import { useChat } from "ai/react";
 import ChatHeader from "./ChatHeader";
@@ -15,13 +16,18 @@ export default function Chat() {
     messages,
     input,
     handleInputChange,
-    handleSubmit,
+    handleSubmit: originalHandleSubmit,
     setMessages,
     isLoading,
     error,
   } = useChat();
 
   const { isVisible } = useChatbot();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    originalHandleSubmit(e);
+  };
 
   return (
     isVisible && (
