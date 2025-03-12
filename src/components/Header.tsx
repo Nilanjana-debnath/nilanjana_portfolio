@@ -2,7 +2,7 @@ import Link from "next/link";
 import ChatToggle from "./ChatToggle";
 import ThemeToggle from "./ThemeToggle";
 // import AIChatButton from "./AIChatButton";
-import { Home, Briefcase, Contact, BookOpen, Box, icons } from "lucide-react";
+import { Home, Briefcase, Contact, BookOpen, Box, icons, Boxes } from "lucide-react";
 const navLinks = [
   {
     name: "Home",
@@ -12,7 +12,7 @@ const navLinks = [
   {
     name: "Skills",
     href: "/skills",
-    icon: BookOpen
+    icon: Boxes
   },
   {
     name: "Projects",
