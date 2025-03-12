@@ -73,9 +73,9 @@ export default async function Home() {
 
       {/* Experience Section */}
       <Experience />
-      <TechStack/>
+      {/* <TechStack/> */}
       {/* Skills Section */}
-       <Skills /> 
+       {/* <Skills />  */}
       {/* Add the Skills component here  */}
 
       {/* Featured Skills Section */}
