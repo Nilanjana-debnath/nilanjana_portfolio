@@ -24,7 +24,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-3xl font-bold">
-              <img src="/favicon.ico" alt="Nilanjana" width={50} height={50} />
+              <img src="/favicon.ico" alt="Nilanjana" width={30} height={30} className="m-0 p-0" />
             </Link>
           </div>
           <div className="hidden md:block">
