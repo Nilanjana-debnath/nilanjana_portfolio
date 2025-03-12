@@ -20,8 +20,6 @@ export function ProjectCard({ project }: Props) {
   const { name, href, description, image, tags, links } = project;
 
   return (
-    <Link href={href || `/projects/${name.toLowerCase().replace(/\s+/g, '-')}`} passHref>
-    console.log(href);
     <Card className="flex flex-col">
       <CardHeader>
         {image && (
@@ -70,6 +68,5 @@ export function ProjectCard({ project }: Props) {
         )}
       </CardFooter>
     </Card>
-    </Link>
   );
 }
