@@ -4,6 +4,7 @@
       "name": "HT-Graph: Heterogeneous Continuous-Time Dynamic Graph Representation Learning",
       "description": "Developed a model to improve prediction performance and computational efficiency for large, dynamic, heterogeneous graphs using neighbor-aware learning, neighbor-store, and restarter modules.",
       "image": "/ht-graph.jpg",  
+      "href": "/projects/ht-graph",
       "tags": [
         "Python",
         "PyTorch",
@@ -24,6 +25,7 @@
       "name": "Human Activity Recognition on UCF-50 Dataset",
       "description": "Developed a human activity recognition system for video data using Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) networks.",
       "image": "/activity-recognition.jpg",  
+      "href": "/projects/human-activity-recognition",
       "tags": [
         "PyTorch",
         "CNN",
@@ -43,6 +45,7 @@
       "name": "Traffic Forecasting on Metropolitan LA Dataset",
       "description": "Built a traffic forecasting model using Temporal Graph Neural Networks (TGNNs) to predict traffic speed in real-time based on spatial and temporal data.",
       "image": "/traffic-forecast.jpg",  
+      "href": "/projects/traffic-forecasting",
       "tags": [
         "PyTorch",
         "PyTorch-Geometric-Temporal",
@@ -61,6 +64,7 @@
       "name": "Deepseek PDF Chat: AI-Powered PDF Query System Using LangChain and Ollama",
       "description": "Built a PDF-based question-answering system using LangChain, leveraging text chunking, embedding generation, and vector storage for efficient semantic search and retrieval-augmented generation (RAG). Integrated a Streamlit-based UI with the Deepseek language model (deepseek-r1:1.5b) via langchain-ollama, enabling real-time, context-aware query responses.",
       "image": "/deepseek-chat.jpg",
+      "href": "/projects/deepseek-pdf-chat",
       "tags": [
         "Python",
         "LangChain",
