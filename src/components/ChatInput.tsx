@@ -23,6 +23,17 @@ export default function ChatInput({
 }: ChatInputProps) {
   return (
     <form onSubmit={handleSubmit} className="m-3 flex gap-1">
+      <Button
+        title="Clear chat"
+        variant="outline"
+        onClick={() => setMessages([])}
+        className="px-3 py-2"
+        disabled={messages.length === 0}
+        type="button"
+      >
+        <Trash className="size-4 text-rose-500" />
+      </Button>
+      
       <input
         value={input}
         onChange={handleInputChange}
