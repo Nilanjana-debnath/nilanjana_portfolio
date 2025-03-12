@@ -9,7 +9,6 @@ import Link from "next/link";
 import path from "path";
 import Skills from "@/components/Skills"; // Import the Skills component
 import TechStack from "@/components/TechStack";
-import { useChatbot } from "@/contexts/ChatContext";
 
 // Constants
 const BLOG_DIRECTORY = path.join(process.cwd(), "content"); // Path to blog content
@@ -19,7 +18,6 @@ const LIMIT = 2; // Max number of posts/projects to display
 export default async function Home() {
   // Fetch latest posts
   // const posts = await getPosts(BLOG_DIRECTORY, LIMIT);
-  const { isVisible, toggleChatbot } = useChatbot();
 
   return (
     
@@ -57,12 +55,7 @@ export default async function Home() {
           {/* Chatbot Prompt */}
           <div className="mt-4 flex items-end gap-1">
             <p className="font-semibold">Ask the chatbot anything about me</p>
-            {/* <ArrowDownRight className="size-5 animate-bounce" /> */}
-            
-            <Button size="icon" variant="ghost" onClick={toggleChatbot}>
-                {<ArrowDownRight className="size-5 animate-bounce" />}
-                <span className="sr-only">Chat Toggle</span>
-            </Button>
+            <ArrowDownRight className="size-5 animate-bounce" />
           </div>
           
 
