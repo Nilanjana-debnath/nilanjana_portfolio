@@ -19,7 +19,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <ChatProvider>
         {children}
         <Chat />
-        <AIChatButton />
+        {/* <AIChatButton /> */}
       </ChatProvider>
       <ToastProvider />
     </ThemeProvider>
