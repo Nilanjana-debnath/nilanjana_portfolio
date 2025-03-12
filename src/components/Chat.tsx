@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/Accordion";
+import { Message } from "ai";
 
 export default function Chat() {
   const {
@@ -49,7 +50,7 @@ export default function Chat() {
               input={input}
               handleSubmit={handleSubmit}
               handleInputChange={handleInputChange}
-              setMessages={setMessages}
+              setMessages={setMessages as React.Dispatch<React.SetStateAction<Message[]>>}
               isLoading={isLoading}
               messages={messages}
             />
