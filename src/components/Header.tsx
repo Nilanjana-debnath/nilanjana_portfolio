@@ -2,23 +2,23 @@ import Link from "next/link";
 import ChatToggle from "./ChatToggle";
 import ThemeToggle from "./ThemeToggle";
 // import AIChatButton from "./AIChatButton";
-import { Home, Briefcase, Contact, BookOpen, Box } from "lucide-react";
+import { Home, Briefcase, Contact, BookOpen, Box, Icon, icons } from "lucide-react";
 
 const navLinks = [
   {
     name: "Home",
     href: "/",
-    icon: Home,
+    icon: Home
   },
   {
     name: "Projects",
     href: "/projects",
-    icon: Briefcase,
+    icon: Briefcase
   },
   {
     name: "Contact",
     href: "/contact",
-    icon: Contact,
+    icon: Contact
   },
 ];
 
@@ -28,11 +28,10 @@ export default function Header() {
       <nav className="flex items-center justify-between">
         <ul className="flex gap-4 sm:gap-8">
           {navLinks.map((nav, id) => (
-            <li key={id} className="link flex items-center gap-2">
-              <Link href={nav.href} className="flex items-center gap-2">
-                <nav.icon className="w-5 h-5" />
-                {nav.name}
-              </Link>
+            <li key={id} className="link">
+              <Link href={nav.href}>
+                <nav.icon className="w-5 h-5 mr-2" />
+              {nav.name}</Link>
             </li>
           ))}
         </ul>
