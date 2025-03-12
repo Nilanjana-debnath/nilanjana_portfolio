@@ -30,7 +30,7 @@ export default function Header() {
           {navLinks.map((nav, id) => (
             <li key={id} className="link">
               <Link href={nav.href}>
-                <nav.icon className="w-5 h-5 mr-2" />
+                {/* <nav.icon className="w-5 h-5 mr-2" /> */}
               {nav.name}</Link>
             </li>
           ))}
