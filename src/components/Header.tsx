@@ -29,14 +29,7 @@ export default function Header() {
         <ul className="flex gap-4 sm:gap-8">
           {navLinks.map((nav, id) => (
             <li key={id} className="link">
-              <Link
-                key={nav.name}
-                href={nav.href}
-                className="px-3 py-2 rounded-md text-base font-medium flex items-center"
-              >
-                <nav.icon className="w-5 h-5 mr-2" />
-                {nav.name}
-              </Link> 
+              <Link href={nav.href}>{nav.name}</Link>
             </li>
           ))}
         </ul>
