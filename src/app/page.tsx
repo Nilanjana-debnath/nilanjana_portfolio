@@ -78,6 +78,21 @@ export default async function Home() {
        <Skills /> 
       {/* Add the Skills component here  */}
 
+      {/* Featured Skills Section */}
+      <section className="flex flex-col gap-8">
+        <div className="flex justify-between">
+          <h2 className="title text-2xl sm:text-3xl">Skills</h2>
+          <LinkWithIcon
+            href="/Skills"
+            position="right"
+            icon={<ArrowRightIcon className="size-5" />}
+            text="View All"
+          />
+        </div>
+        <Skills />
+      </section>
+
+
       {/* Featured Projects Section */}
       <section className="flex flex-col gap-8">
         <div className="flex justify-between">
@@ -86,7 +101,7 @@ export default async function Home() {
             href="/projects"
             position="right"
             icon={<ArrowRightIcon className="size-5" />}
-            text="View More"
+            text="View All"
           />
         </div>
         <Projects limit={LIMIT} />
