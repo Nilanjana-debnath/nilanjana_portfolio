@@ -33,8 +33,31 @@ export default function ChatInput({
       >
         <Trash className="size-4 text-rose-500" />
       </Button>
-      
-      <input
+      <Input
+        autoFocus
+        placeholder="Ask something..."
+        // className="bg-muted"
+        value={input}
+        onChange={handleInputChange}
+        // onKeyDown={(e) => {
+        //   if (e.key === "Enter") {
+        //     e.preventDefault();
+        //     handleSubmit(e);
+        //   }
+        // }}
+      />
+      <Button
+        title="Send message"
+        variant="default"
+        className="px-3 py-2"
+        disabled={input.length === 0}
+        type="submit"
+      >
+        <SendHorizontal className="size-4" />
+      </Button>
+
+
+      {/* <input
         value={input}
         onChange={handleInputChange}
         placeholder="Say something..."
@@ -47,7 +70,7 @@ export default function ChatInput({
         title="Submit message"
       >
         <SendHorizontal size={24} />
-      </button>
+      </button> */}
     </form>
   );
 }
