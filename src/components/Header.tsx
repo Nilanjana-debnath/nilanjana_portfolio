@@ -10,6 +10,11 @@ const navLinks = [
     icon: Home
   },
   {
+    name: "Skills",
+    href: "/skills",
+    icon: BookOpen
+  },
+  {
     name: "Projects",
     href: "/projects",
     icon: Briefcase
