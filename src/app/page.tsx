@@ -9,7 +9,7 @@ import Link from "next/link";
 import path from "path";
 import Skills from "@/components/Skills"; // Import the Skills component
 import TechStack from "@/components/TechStack";
-import AdditionalInfo from "@/components/additionalInfo";
+// import AdditionalInfo from "@/components/additionalInfo";
 // Constants
 const BLOG_DIRECTORY = path.join(process.cwd(), "content"); // Path to blog content
 const BIRTH_YEAR = 1998; // Birth year for age calculation
