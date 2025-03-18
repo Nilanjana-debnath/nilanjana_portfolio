@@ -38,7 +38,11 @@ export default function Skills({ limit }: Props) {
                         key={id}
                         className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-lg text-sm"
                       >
-                        {skill.icon} {skill.name}
+                        <img
+                          src={`/icons/${skill.name.toLowerCase()}.png`}
+                          alt={skill.name}
+                          className="w-4 h-4"
+                        /> {skill.name}
                       </span>
                     ))}
                   </div>
