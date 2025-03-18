@@ -41,7 +41,7 @@
         { "name": "ONNX", "icon": "🧠" },
         { "name": "MLflow", "icon": "💧" },
         { "name": "Docker", "icon": "🐳" },
-        { "name": "CI/CD", "icon": "🔄" }
+        { "name": "CI-CD", "icon": "🔄" }
       ],
       "Cloud Platforms": [
         { "name": "AWS (S3, SageMaker, Lambda)", "icon": "☁️" }
