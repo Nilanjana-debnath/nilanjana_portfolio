@@ -121,7 +121,9 @@ export default async function Home() {
         </div>
         <Posts posts={posts} />
       </section>*/}
+      <div className="hidden">
       <AdditionalInfo />
+      </div>
       </article>
   );
 }
