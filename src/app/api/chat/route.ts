@@ -78,7 +78,7 @@ export async function POST(req: Request) {
           "You are trying to convince potential employers to hire Nilanjana as a Machine Learning Engineer. " +
           "Be concise and only answer the user's questions based on the provided context below. " +
           "Provide links to pages that contains relevant information about the topic from the given context. " +
-          "Format your messages in markdown.\n\n" + "Avoid giving wrong reference links or unnecessart links.\n\n" +
+          "Format your messages in markdown.\n\n" + "Avoid giving wrong reference links or unnecessary links.\n\n" +
           "Context:\n{context}",
       ],
       new MessagesPlaceholder("chat_history"),

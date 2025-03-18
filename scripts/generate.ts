@@ -7,12 +7,11 @@ import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { getEmbeddingsCollection, getVectorStore } from "../src/lib/vectordb";
-import fs from "fs"; // Import the file system module
 
 async function generateEmbeddings() {
   const vectorStore = await getVectorStore();
 
-  // Clear existing data
+  // clear existing data
   (await getEmbeddingsCollection()).deleteMany({});
   (await Redis.fromEnv()).flushdb();
 
@@ -24,50 +23,43 @@ async function generateEmbeddings() {
     true,
   );
 
-  // Load additional information from a JSON file
-  const additionalInfoPath = "src/data/additionalInfo.json"; // Path to your JSON file
-  let additionalInfo = "";
-  if (fs.existsSync(additionalInfoPath)) {
-    const rawData = fs.readFileSync(additionalInfoPath, "utf-8");
-    additionalInfo = JSON.parse(rawData).info || ""; // Assuming the JSON has an "info" field
-  }
-
-  // Routes
+  // routes
   const routes = (await routeLoader.load())
     .filter((route) => route.metadata.source.endsWith("page.tsx"))
     .map((route): DocumentInterface => {
       const url =
         route.metadata.source
-          .replace(/\\/g, "/") // Replace "\\" with "/"
+          .replace(/\\/g, "/") // replace "\\" with "/"
           .split("/src/app")[1]
           .split("/page.tsx")[0] || "/";
 
       const pageContentTrimmed = route.pageContent
-        .replace(/^import.*$/gm, "") // Remove all import statements
-        .replace(/ className=(["']).*?\1| className={.*?}/g, "") // Remove all className props
-        .replace(/^\s*[\r]/gm, "") // Remove empty lines
+        .replace(/^import.*$/gm, "") // remove all import statements
+        .replace(/ className=(["']).*?\1| className={.*?}/g, "") // remove all className props
+        .replace(/^\s*[\r]/gm, "") // remove empty lines
         .trim();
 
-      // Append additional information to the page content
-      const finalPageContent = `${pageContentTrimmed}\n\n${additionalInfo}`;
-
-      return { pageContent: finalPageContent, metadata: { url } };
+      return { pageContent: pageContentTrimmed, metadata: { url } };
     });
+
+  // console.log(routes);
 
   const routesSplitter = RecursiveCharacterTextSplitter.fromLanguage("html");
   const splitRoutes = await routesSplitter.splitDocuments(routes);
 
-  // Resume data
+  // resume data
   const dataLoader = new DirectoryLoader("src/data", {
     ".json": (path) => new TextLoader(path),
   });
 
   const data = await dataLoader.load();
 
+  // console.log(data);
+
   const dataSplitter = RecursiveCharacterTextSplitter.fromLanguage("js");
   const splitData = await dataSplitter.splitDocuments(data);
 
-  // Blog posts
+  // blog posts
   const postLoader = new DirectoryLoader(
     "content",
     {
@@ -79,10 +71,12 @@ async function generateEmbeddings() {
   const posts = (await postLoader.load())
     .filter((post) => post.metadata.source.endsWith(".mdx"))
     .map((post): DocumentInterface => {
-      const pageContentTrimmed = post.pageContent.split("---")[1]; // Only want the frontmatter
+      const pageContentTrimmed = post.pageContent.split("---")[1]; // only want the frontmatter
 
       return { pageContent: pageContentTrimmed, metadata: post.metadata };
     });
+
+  // console.log(posts);
 
   const postSplitter = RecursiveCharacterTextSplitter.fromLanguage("markdown");
   const splitPosts = await postSplitter.splitDocuments(posts);
