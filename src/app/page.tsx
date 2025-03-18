@@ -10,7 +10,6 @@ import path from "path";
 import Skills from "@/components/Skills"; // Import the Skills component
 import TechStack from "@/components/TechStack";
 import AdditionalInfo from "@/components/additionalInfo";
-import { useState } from "react";
 // Constants
 const BLOG_DIRECTORY = path.join(process.cwd(), "content"); // Path to blog content
 const BIRTH_YEAR = 1998; // Birth year for age calculation
@@ -19,7 +18,6 @@ const LIMIT = 2; // Max number of posts/projects to display
 export default async function Home() {
   // Fetch latest posts
   // const posts = await getPosts(BLOG_DIRECTORY, LIMIT);
-  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false); // State to toggle visibility
 
   return (
     
@@ -123,16 +121,6 @@ export default async function Home() {
         </div>
         <Posts posts={posts} />
       </section>*/}
-      {/* Toggle Additional Info Section */}
-      <section className="flex flex-col gap-8">
-        <Button
-          variant="outline"
-          onClick={() => setShowAdditionalInfo(!showAdditionalInfo)} // Toggle visibility
-        >
-          {showAdditionalInfo ? "Hide Additional Info" : "Show Additional Info"}
-        </Button>
-        {showAdditionalInfo && <AdditionalInfo />} {/* Conditionally render the component */}
-      </section>
       </article>
   );
 }
