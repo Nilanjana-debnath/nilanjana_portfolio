@@ -59,8 +59,8 @@ export function TechstackCard({ techstack }: Props) {
             {links.toSorted().map((link, idx) => (
               <Link href={link?.href} key={idx} target="_blank">
                 <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-                  <Icon name={link.icon} className="size-3" />
-                  {link.name}
+                <img  src={`/icons/${link.name.toLowerCase()}.png`}  alt={link.name}  className="w-4 h-4" />
+                {link.name}
                 </Badge>
               </Link>
             ))}

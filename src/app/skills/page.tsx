@@ -1,4 +1,5 @@
 import Skills from "@/components/Skills";
+import Techstacks from "@/components/TechStack";
 
 export default async function SkillsPage() {
   return (
@@ -6,6 +7,7 @@ export default async function SkillsPage() {
       <h1 className="title">My Skills -</h1>
 
       <Skills />
+      <Techstacks />
     </article>
   );
 }
