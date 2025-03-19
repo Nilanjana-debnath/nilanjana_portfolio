@@ -13,6 +13,7 @@ import {
 import { Message } from "ai";
 import { Button } from "./ui/Button"; // Import your Button component
 import { BotMessageSquare, MessageSquareX } from "lucide-react";
+import { useTheme } from "next-themes"; // Import useTheme for theme detection
 
 export default function Chat() {
   const {
@@ -26,6 +27,7 @@ export default function Chat() {
   } = useChat();
 
   const { isVisible, toggleChatbot } = useChatbot(); // Add toggleVisibility from context
+  const { theme } = useTheme(); // Get the current theme
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,10 +44,15 @@ export default function Chat() {
       >
         {/* Chat Toggle Button */}
         <Button
-          onClick={toggleChatbot} style={{ zIndex: 100 }}
-          className={`absolute ${
-            isVisible ? "-top-4 -right-4" : "-top-10 right-0"
-          } bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg`}
+          onClick={toggleChatbot}
+          style={{ zIndex: 100 }}
+          className={`absolute right-0 transform transition-transform duration-300 ${
+            isVisible ? "translate-y-1/2" : "translate-y-1/2"
+          } ${
+            theme === "dark"
+              ? "bg-gray-200 text-black" // Light button for dark theme
+              : "bg-gray-800 text-white" // Dark button for light theme
+          } px-4 py-2 rounded-full shadow-lg`}
         >
           {isVisible ? (
             <MessageSquareX className="size-5" />

@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md">
-      <nav className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -28,8 +28,8 @@ export default function Header() {
               <img
                 src={theme === "dark" ? "/logo_white.ico" : "/favicon.ico"} // Change logo based on theme
                 alt="Nilanjana"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 className="m-0 p-0"
               />
             </Link>
