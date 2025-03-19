@@ -95,7 +95,7 @@ export async function POST(req: Request) {
     - Do not include additional context unless explicitly requested by the user.
     - If the information is not available, politely inform the user.
     - Only include links that are explicitly provided in the context. Do not generate links that are not present in the context.
-
+    - When you are giving any reference to links like skills projects etc, the only valid links are skills page, projects page, home page and contact page. do not generate links on your own. thats a very bad practice as clicking to those links will go to wrong place or nowhere. make sure to not include links which are incorrect.
     Context:
     {context}`,
       ],
@@ -121,7 +121,7 @@ export async function POST(req: Request) {
       input: latestMessage,
       chat_history: chatHistory,
     });
-    const sanitizedResponse = sanitizeResponse((await resultPromise).answer);
+    // const sanitizedResponse = sanitizeResponse((await resultPromise).answer);
     const response = new StreamingTextResponse(stream);
 
     resultPromise.then((result) => {
@@ -131,7 +131,7 @@ export async function POST(req: Request) {
       }
       
     // // Sanitize the response to validate links
-    // const sanitizedResponse = sanitizeResponse(result.answer);
+    const sanitizedResponse = sanitizeResponse(result.answer);
     // handlers.handleLLMResponse(sanitizedResponse);
 
     }).catch((error) => {
