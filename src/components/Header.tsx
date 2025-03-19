@@ -16,7 +16,12 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useTheme(); // Get the current theme
+  const { theme, resolvedTheme } = useTheme(); // Get the current theme
+  // Determine the logo based on the theme
+  const logoSrc =
+  theme === "dark" || resolvedTheme === "dark"
+    ? "/logo_white.ico"
+    : "/favicon.ico";
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md">
@@ -26,7 +31,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="text-3xl font-bold">
               <img
-                src={theme === "dark" ? "/logo_white.ico" : "/favicon.ico"} // Change logo based on theme
+                src={logoSrc} // Change logo based on theme
                 alt="Nilanjana"
                 width={40}
                 height={40}
