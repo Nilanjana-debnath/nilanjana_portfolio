@@ -26,7 +26,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="text-3xl font-bold">
               <img
-                src={theme === "dark" ? "/logo_white.png" : "/favicon.ico"} // Change logo based on theme
+                src={theme === "dark" ? "/logo_white.ico" : "/favicon.ico"} // Change logo based on theme
                 alt="Nilanjana"
                 width={30}
                 height={30}
@@ -55,13 +55,12 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Theme Toggle (Always Visible) */}
-          <div className="ml-4 flex items-center">
+          {/* Theme Toggle and Hamburger Menu */}
+          <div className="flex items-center space-x-4 md:hidden">
+            {/* Theme Toggle */}
             <ThemeToggle />
-          </div>
 
-          {/* Hamburger Menu Button */}
-          <div className="flex -mr-2 md:hidden">
+            {/* Hamburger Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
