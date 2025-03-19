@@ -1,4 +1,4 @@
-import { FormEvent , useState} from "react";
+import { FormEvent } from "react";
 import { useChatbot } from "@/contexts/ChatContext";
 import { useChat } from "ai/react";
 import ChatHeader from "./ChatHeader";
@@ -28,15 +28,10 @@ export default function Chat() {
 
   const { isVisible, toggleChatbot } = useChatbot(); // Add toggleVisibility from context
   const { theme } = useTheme(); // Get the current theme
-  const [accordionOpen, setAccordionOpen] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     originalHandleSubmit(e);
-  };
-  const handleButtonClick = () => {
-    toggleChatbot(); // Toggle chatbot visibility
-    setAccordionOpen(!accordionOpen); // Toggle accordion state
   };
 
   return (
@@ -68,10 +63,10 @@ export default function Chat() {
         </Button> */}
         {/* Chat Toggle Button */}
         <Button
-          onClick={handleButtonClick}
+          onClick={toggleChatbot}
           style={{ zIndex: 100 }}
           className={`absolute ${
-            isVisible ? "-top-0 -right-0" : "-top-0 right-0"
+            isVisible ? "-top-4 -right-4" : "-top-20 right-4"
           } ${
             theme === "dark"
               ? "bg-gray-200 text-black" // Light button for dark theme
@@ -86,8 +81,7 @@ export default function Chat() {
         </Button>
 
         {isVisible && (
-          <Accordion type="single" collapsible className="relative z-40 flex"
-          value={accordionOpen ? "item-1" : undefined} >
+          <Accordion type="single" collapsible className="relative z-40 flex">
             <AccordionItem
               value="item-1"
               className="w-80 rounded-md border bg-background"
