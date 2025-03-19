@@ -84,7 +84,7 @@ export async function POST(req: Request) {
     Provide links to pages that contains relevant information about the topic from the given context.
     Format your messages in markdown.
     Your responses must:
-    1. Be specific and answer only the user's question.
+    1. Be specific and answer only the user's question. Be professional while responsing.
     2. Avoid including unrelated information.
     3. Detailed but concise - Provide meaningful information without being overwhelming
     4. Use markdown links only when explicitly relevant.
