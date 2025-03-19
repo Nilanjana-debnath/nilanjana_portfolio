@@ -39,7 +39,7 @@ export default function Chat() {
       {/* Chat Interface */}
       <div
         className={`fixed right-8 z-50 transition-all duration-300 ${
-          isVisible ? "bottom-8" : "bottom-8"
+          isVisible ? "bottom-0" : "bottom-0"
         }`}
       >
 
@@ -65,7 +65,9 @@ export default function Chat() {
         <Button
           onClick={toggleChatbot}
           style={{ zIndex: 100 }}
-          className={`absolute -top-10 right-0  ${
+          className={`absolute ${
+            isVisible ? "-top-0 -right-0" : "-top-10 right-0"
+          } ${
             theme === "dark"
               ? "bg-gray-200 text-black" // Light button for dark theme
               : "bg-gray-800 text-white" // Dark button for light theme
