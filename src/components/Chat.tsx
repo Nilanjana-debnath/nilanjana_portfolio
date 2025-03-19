@@ -39,7 +39,7 @@ export default function Chat() {
       {/* Chat Interface */}
       <div
         className={`fixed right-8 z-50 transition-all duration-300 ${
-          isVisible ? "bottom-0" : "bottom-0"
+          isVisible ? "bottom-4" : "bottom-4"
         }`}
       >
 
