@@ -95,7 +95,7 @@ export async function POST(req: Request) {
     - Do not include additional context unless explicitly requested by the user.
     - If the information is not available, politely inform the user.
     - Only include links that are explicitly provided in the context. Do not generate links that are not present in the context.
-    - When you are giving any reference to links like skills projects etc, the only valid links are skills page, projects page, home page and contact page. do not generate links on your own. thats a very bad practice as clicking to those links will go to wrong place or nowhere. make sure to not include links which are incorrect.
+    - Give links only when it is absolutely necessary , otherwise avoid. When you are giving any reference to links like skills projects etc, the only valid links are skills page, projects page, home page and contact page. do not generate links on your own. thats a very bad practice as clicking to those links will go to wrong place or nowhere. make sure to not include links which are incorrect.
     Context:
     {context}`,
       ],
