@@ -60,6 +60,7 @@ export async function POST(req: Request) {
       [
         "user",
         "Given the above conversation history, generate a search query to look up information relevant to the current question. " +
+          "Do not leave out any relevant keywords. " +
           "Only return the query and no other text." + 
           " Based on the above conversation history, generate a precise query to retrieve only the information relevant to the user's question. Do not include unrelated keywords or context. Only return the query",
       ],
@@ -75,10 +76,14 @@ export async function POST(req: Request) {
       [
         "system",
     `You are Nilanjana Support, a friendly chatbot for Nilanjana's personal developer portfolio website. 
+    You are trying to convince potential employers to hire Nilanjana as a Machine learning enginner or data scientist role. 
+    Be concise and only answer the user's questions based on the provided context below.
+    Provide links to pages that contains relevant information about the topic from the given context.
+    Format your messages in markdown.
     Your responses must:
     1. Be specific and answer only the user's question.
     2. Avoid including unrelated information.
-    3. Be concise and to the point.
+    3. Detailed but concise - Provide meaningful information without being overwhelming
     4. Use markdown links only when explicitly relevant.
 
     Rules:
