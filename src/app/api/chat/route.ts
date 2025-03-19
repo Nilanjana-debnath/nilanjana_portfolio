@@ -121,7 +121,7 @@ export async function POST(req: Request) {
       input: latestMessage,
       chat_history: chatHistory,
     });
-
+    const sanitizedResponse = sanitizeResponse((await resultPromise).answer);
     const response = new StreamingTextResponse(stream);
 
     resultPromise.then((result) => {
