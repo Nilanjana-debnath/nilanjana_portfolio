@@ -42,12 +42,31 @@ export default function Chat() {
           isVisible ? "bottom-8" : "bottom-8"
         }`}
       >
+
+{/* 
+      <div
+        className={`fixed right-8 z-50 transition-all duration-300 ${
+          isVisible ? "bottom-8" : "bottom-8"
+        }`}
+      >
+        <Button
+          onClick={toggleChatbot} style={{ zIndex: 100 }}
+          className={`absolute ${
+            isVisible ? "-top-4 -right-4" : "-top-10 right-0"
+          } bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg`}
+        >
+          {isVisible ? (
+            <MessageSquareX className="size-5" />
+          ) : (
+            <BotMessageSquare className="size-5" />
+          )}
+        </Button> */}
         {/* Chat Toggle Button */}
         <Button
           onClick={toggleChatbot}
           style={{ zIndex: 100 }}
-          className={`absolute right-0 transform transition-transform duration-300 ${
-            isVisible ? "translate-y-1/2" : "translate-y-1/2"
+          className={`absolute ${
+            isVisible ? "-top-4 -right-4" : "-top-4 right-4"
           } ${
             theme === "dark"
               ? "bg-gray-200 text-black" // Light button for dark theme
@@ -71,8 +90,8 @@ export default function Chat() {
               <AccordionTrigger
                 className={`border-b px-6 py-2 font-semibold ${
                   theme === "dark"
-                    ? "bg-gray-800 text-white" // Dark background and light text for dark theme
-                    : "bg-gray-200 text-black" // Light background and dark text for light theme
+                    ? "bg-gray-200 text-white" // Dark background and light text for dark theme
+                    : "bg-gray-800 text-white" // Light background and dark text for light theme
                 }`}
               >
                 <ChatHeader />
