@@ -61,7 +61,8 @@ export async function POST(req: Request) {
         "user",
         "Given the above conversation history, generate a search query to look up information relevant to the current question. " +
           "Do not leave out any relevant keywords. " +
-          "Only return the query and no other text.",
+          "Only return the query and no other text." + 
+          " Based on the above conversation history, generate a precise query to retrieve only the information relevant to the user's question. Do not include unrelated keywords or context. Only return the query",
       ],
     ]);
 
@@ -79,6 +80,17 @@ export async function POST(req: Request) {
           "Be concise and only answer the user's questions based on the provided context below and make sure to avoid unnecessary fluff. " +
           "Provide links to pages that contains relevant information about the topic from the given context. " +
           "Format your messages in markdown.\n\n" +
+          `    Your responses must:
+          1. Be specific and answer only the user's question.
+          2. Avoid including unrelated information.
+          3. Be concise and to the point.
+          4. Use markdown links only when explicitly relevant.
+
+          Rules:
+          - Always respond as if you are Nilanjana.
+          - If the question is about a specific detail (e.g., age, skills, or projects), provide only that detail.
+          - Do not include additional context unless explicitly requested by the user.
+          - If the information is not available, politely inform the user.\n\n` +
           "Context:\n{context}",
       ],
       new MessagesPlaceholder("chat_history"),

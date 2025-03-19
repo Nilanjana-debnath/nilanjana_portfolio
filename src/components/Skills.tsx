@@ -24,7 +24,7 @@ export default function Skills({ limit }: Props) {
   return (
     <section>
       {/* Grid layout for skills categories */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 ">
         {categories.slice(0, displayLimit).map(([category, skills], idx) => (
           <Card
             key={idx}
