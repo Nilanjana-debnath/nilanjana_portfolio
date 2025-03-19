@@ -42,10 +42,11 @@ export default function Chat() {
       >
         {/* Chat Toggle Button */}
         <Button
-          onClick={toggleChatbot} style={{ zIndex: 100 }}
-          className={`absolute ${
-            isVisible ? "-top-4 -right-4" : "-top-10 right-0"
-          } bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg`}
+          onClick={toggleChatbot}
+          style={{ zIndex: 100 }}
+          className={`absolute right-0 transform transition-transform duration-300 ${
+            isVisible ? "translate-y-1/2" : "translate-y-1/2"
+          } bg-gray-800 text-white dark:bg-gray-200 dark:text-black px-4 py-2 rounded-full shadow-lg`}
         >
           {isVisible ? (
             <MessageSquareX className="size-5" />
