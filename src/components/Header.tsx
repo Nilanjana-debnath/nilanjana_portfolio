@@ -36,7 +36,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-6">
             <div className="ml-10 flex items-baseline space-x-4">
               {navLinks.map((link) => (
                 <Link
@@ -53,10 +53,13 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+
+            {/* Theme Toggle for Desktop */}
+            <ThemeToggle />
           </div>
 
-          {/* Theme Toggle and Hamburger Menu */}
-          <div className="flex items-center space-x-4 md:hidden">
+          {/* Theme Toggle and Hamburger Menu for Mobile */}
+          <div className="flex items-center space-x-2 md:hidden">
             {/* Theme Toggle */}
             <ThemeToggle />
 
