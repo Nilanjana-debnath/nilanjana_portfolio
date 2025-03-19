@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { Home, Briefcase, Boxes, Contact } from "lucide-react";
+import { useTheme } from "next-themes"; // Import useTheme for theme detection
 
 const navLinks = [
   { name: "Home", href: "/", icon: Home },
@@ -15,6 +16,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme(); // Get the current theme
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md">
@@ -24,7 +26,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="text-3xl font-bold">
               <img
-                src="/favicon.ico"
+                src={theme === "dark" ? "/logo_white.png" : "/favicon.ico"} // Change logo based on theme
                 alt="Nilanjana"
                 width={30}
                 height={30}
