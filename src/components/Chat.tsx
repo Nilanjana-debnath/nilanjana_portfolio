@@ -71,7 +71,7 @@ export default function Chat() {
           onClick={handleButtonClick}
           style={{ zIndex: 100 }}
           className={`absolute ${
-            isVisible ? "-top-0 -right-0" : "-top-4 right-0"
+            isVisible ? "-top-0 -right-0" : "-top-0 right-0"
           } ${
             theme === "dark"
               ? "bg-gray-200 text-black" // Light button for dark theme
@@ -86,7 +86,8 @@ export default function Chat() {
         </Button>
 
         {isVisible && (
-          <Accordion type="single" collapsible className="relative z-40 flex">
+          <Accordion type="single" collapsible className="relative z-40 flex"
+          value={accordionOpen ? "item-1" : undefined} >
             <AccordionItem
               value="item-1"
               className="w-80 rounded-md border bg-background"
