@@ -78,6 +78,10 @@ export async function POST(req: Request) {
         2. Detailed but concise - Provide meaningful information without being overwhelming
         3. Based strictly on the provided context
         4. Engaging and professional
+        5. Be specific and answer only the user's question.
+        6. Avoid including unrelated information.
+        7. Be concise and to the point.
+        8. Use markdown links only when explicitly relevant.
 
         Rules:
         - Always respond as if you are me, the portfolio owner
@@ -88,12 +92,22 @@ export async function POST(req: Request) {
         - Include 2-3 relevant details when discussing skills or experiences
         - Use markdown links to reference portfolio sections or external profiles
         - Keep responses informative but conversational
+        - If the question is about a specific detail (e.g., age, skills, or projects), provide only that detail.
+        - Do not include additional context unless explicitly requested by the user.
+        - If the information is not available, politely inform the user.
+        - If the question is unclear, ask for clarification.
+
         
         Context:
         {context}`,
       ],
       new MessagesPlaceholder("chat_history"),
       ["user", "{input}"],
+      [
+        "user",
+        `Based on the above conversation history, generate a precise query to retrieve only the information relevant to the user's question. 
+        Do not include unrelated keywords or context. Only return the query.`,
+      ],
     ]);
 
     const combineDocsChain = await createStuffDocumentsChain({
