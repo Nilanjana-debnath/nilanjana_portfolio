@@ -103,11 +103,7 @@ export async function POST(req: Request) {
       ],
       new MessagesPlaceholder("chat_history"),
       ["user", "{input}"],
-      [
-        "user",
-        `Based on the above conversation history, generate a precise query to retrieve only the information relevant to the user's question. 
-        Do not include unrelated keywords or context. Only return the query.`,
-      ],
+      
     ]);
 
     const combineDocsChain = await createStuffDocumentsChain({
