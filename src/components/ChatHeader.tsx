@@ -1,17 +1,13 @@
-import { useTheme } from "next-themes";
-
 export default function ChatHeader() {
-  const { theme } = useTheme(); // Get the current theme
-
   return (
-    <div
-      className={`p-4 text-lg font-semibold ${
-        theme === "dark"
-          ? "bg-gray-200 text-black" // Light background and dark text for dark theme
-          : "bg-gray-800 text-white" // Dark background and light text for light theme
-      }`}
-    >
-      Chat with Nilanjana
-    </div>
+    <section className="flex w-full items-center justify-start gap-3">
+      <div className="flex flex-col items-start">
+        <p className="text-xs">Chat with</p>
+        <div className="flex items-center gap-2">
+          <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+          <p className="text-sm font-medium">Nilanjana's AI Avater</p>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -28,8 +28,8 @@ export default function Header() {
               <img
                 src={theme === "dark" ? "/logo_white.ico" : "/favicon.ico"} // Change logo based on theme
                 alt="Nilanjana"
-                width={30}
-                height={30}
+                width={50}
+                height={50}
                 className="m-0 p-0"
               />
             </Link>
