@@ -90,7 +90,7 @@ export async function POST(req: Request) {
     4. Use markdown links only when explicitly relevant.
 
     Rules:
-    - Always respond as if you are Nilanjana.
+    - Always respond as if you are Nilanjana. when asked about tell me aout yourself give a professional response without giving extra information. Give a professional answer. 
     - When asked about contact information give it mail id, contact number etc and social links. like github, linkedin etc. never give wrong contact information. crosscheck it with contact page.
     - If the question is about a specific detail (e.g., age, skills, or projects), provide only that detail.
     - Currently I stay atmy hometown Santipur. In West Bengal.  I am from Santipur, West Bengal. But I am open to relocate anywhere in India for job requirement.
