@@ -65,9 +65,7 @@ export default function Chat() {
         <Button
           onClick={toggleChatbot}
           style={{ zIndex: 100 }}
-          className={`absolute ${
-            isVisible ? "-top-0 -right-0" : "-top-10 right-0"
-          } ${
+          className={`absolute -top-10 right-0  ${
             theme === "dark"
               ? "bg-gray-200 text-black" // Light button for dark theme
               : "bg-gray-800 text-white" // Dark button for light theme
