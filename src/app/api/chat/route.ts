@@ -13,6 +13,9 @@ import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createHistoryAwareRetriever } from "langchain/chains/history_aware_retriever";
 import { createRetrievalChain } from "langchain/chains/retrieval";
 import { LangChainStream, StreamingTextResponse } from "ai";
+import fetch from "node-fetch"; // Use fetch to validate links
+
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -91,6 +94,7 @@ export async function POST(req: Request) {
     - If the question is about a specific detail (e.g., age, skills, or projects), provide only that detail.
     - Do not include additional context unless explicitly requested by the user.
     - If the information is not available, politely inform the user.
+    - Only include links that are explicitly provided in the context. Do not generate links that are not present in the context.
 
     Context:
     {context}`,
@@ -125,6 +129,11 @@ export async function POST(req: Request) {
         handlers.handleLLMError(new Error("No response generated"), "no_response");
         return;
       }
+      
+    // // Sanitize the response to validate links
+    // const sanitizedResponse = sanitizeResponse(result.answer);
+    // handlers.handleLLMResponse(sanitizedResponse);
+
     }).catch((error) => {
       handlers.handleLLMError(error, "chain_error");
     });
@@ -145,13 +154,42 @@ export async function POST(req: Request) {
   }
 }
 
-function sanitizeResponse(response: string): string {
-  if (!response) return "";
-  
-  return response
-    .replace(/<\/?[^>]+(>|$)/g, "")
-    .trim();
+async function validateLink(link: string): Promise<boolean> {
+  try {
+    const response = await fetch(link, { method: "HEAD" });
+    return response.ok; // Returns true if the link is valid
+  } catch (error) {
+    console.error(`Invalid link: ${link}`, error);
+    return false;
+  }
 }
+
+async function sanitizeResponse(response: string): Promise<string> {
+  if (!response) return "";
+
+  // Extract all links from the response
+  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const matches = [...response.matchAll(linkRegex)];
+
+  // Validate each link
+  for (const match of matches) {
+    const [fullMatch, text, link] = match;
+    const isValid = await validateLink(link);
+    if (!isValid) {
+      // Remove invalid links from the response
+      response = response.replace(fullMatch, text); // Keep the text but remove the link
+    }
+  }
+
+  return response.trim();
+}
+// function sanitizeResponse(response: string): string {
+//   if (!response) return "";
+  
+//   return response
+//     .replace(/<\/?[^>]+(>|$)/g, "")
+//     .trim();
+// }
     // const result = await retrievalChain.invoke({
     //   input: latestMessage,
     //   chat_history: chatHistory,

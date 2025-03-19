@@ -12,7 +12,7 @@ import {
 } from "./ui/Accordion";
 import { Message } from "ai";
 import { Button } from "./ui/Button"; // Import your Button component
-import { Bot, BotOff, MessageSquareX, BotMessageSquare } from "lucide-react";
+import { Bot, BotOff , MessageSquareX, BotMessageSquare} from "lucide-react";
 
 export default function Chat() {
   const {
@@ -35,11 +35,14 @@ export default function Chat() {
   return (
     <>
       {/* Chat Toggle Button */}
-      
-    <Button size="icon" variant="ghost" onClick={toggleChatbot}>
+      <Button
+        onClick={toggleChatbot}
+        className={`fixed right-8 z-50 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 ${
+          isVisible ? "bottom-[28rem]" : "bottom-8"
+        }`}
+      >
       {isVisible ? <MessageSquareX className="size-5" /> : <BotMessageSquare className="size-5" />}
-      <span className="sr-only">Chat Toggle</span>
-    </Button>
+      </Button>
 
       {/* Chat Interface */}
       {isVisible && (
