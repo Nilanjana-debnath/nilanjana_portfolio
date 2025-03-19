@@ -121,7 +121,8 @@ export async function POST(req: Request) {
       input: latestMessage,
       chat_history: chatHistory,
     });
-    // const sanitizedResponse = sanitizeResponse((await resultPromise).answer);
+
+    sanitizeResponse((await resultPromise).answer);
     const response = new StreamingTextResponse(stream);
 
     resultPromise.then((result) => {
@@ -129,9 +130,8 @@ export async function POST(req: Request) {
         handlers.handleLLMError(new Error("No response generated"), "no_response");
         return;
       }
-      
     // // Sanitize the response to validate links
-    const sanitizedResponse = sanitizeResponse(result.answer);
+    // const sanitizedResponse = sanitizeResponse(result.answer);
     // handlers.handleLLMResponse(sanitizedResponse);
 
     }).catch((error) => {
