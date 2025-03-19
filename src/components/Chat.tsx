@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent , useState} from "react";
 import { useChatbot } from "@/contexts/ChatContext";
 import { useChat } from "ai/react";
 import ChatHeader from "./ChatHeader";
@@ -26,17 +26,14 @@ export default function Chat() {
     error,
   } = useChat();
 
-  const { theme } = useTheme(); // Get the current theme
   const { isVisible, toggleChatbot } = useChatbot(); // Add toggleVisibility from context
-
-  // State to manage the accordion's open/close state
+  const { theme } = useTheme(); // Get the current theme
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     originalHandleSubmit(e);
   };
-
   const handleButtonClick = () => {
     toggleChatbot(); // Toggle chatbot visibility
     setAccordionOpen(!accordionOpen); // Toggle accordion state
@@ -45,12 +42,37 @@ export default function Chat() {
   return (
     <>
       {/* Chat Interface */}
-      <div className="fixed right-8 z-50">
+      <div
+        className={`fixed right-8 z-50 transition-all duration-300 ${
+          isVisible ? "bottom-8" : "bottom-8"
+        }`}
+      >
+
+{/* 
+      <div
+        className={`fixed right-8 z-50 transition-all duration-300 ${
+          isVisible ? "bottom-8" : "bottom-8"
+        }`}
+      >
+        <Button
+          onClick={toggleChatbot} style={{ zIndex: 100 }}
+          className={`absolute ${
+            isVisible ? "-top-4 -right-4" : "-top-10 right-0"
+          } bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg`}
+        >
+          {isVisible ? (
+            <MessageSquareX className="size-5" />
+          ) : (
+            <BotMessageSquare className="size-5" />
+          )}
+        </Button> */}
         {/* Chat Toggle Button */}
         <Button
           onClick={handleButtonClick}
           style={{ zIndex: 100 }}
-          className={`absolute right-0 top-1/2 transform -translate-y-1/2 ${
+          className={`absolute ${
+            isVisible ? "-top-0 -right-0" : "-top-4 right-0"
+          } ${
             theme === "dark"
               ? "bg-gray-200 text-black" // Light button for dark theme
               : "bg-gray-800 text-white" // Dark button for light theme
@@ -63,14 +85,8 @@ export default function Chat() {
           )}
         </Button>
 
-        {/* Chat Container */}
         {isVisible && (
-          <Accordion
-            type="single"
-            collapsible
-            className="relative z-40 flex"
-            value={accordionOpen ? "item-1" : undefined} // Control accordion state
-          >
+          <Accordion type="single" collapsible className="relative z-40 flex">
             <AccordionItem
               value="item-1"
               className="w-80 rounded-md border bg-background"
