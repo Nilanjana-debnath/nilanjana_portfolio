@@ -42,82 +42,64 @@ export default function Chat() {
           isVisible ? "bottom-8" : "bottom-8"
         }`}
       >
+        {/* Chat Container */}
+        <div className="relative w-80">
+          {/* Chat Toggle Button */}
+          <Button
+            onClick={toggleChatbot}
+            style={{ zIndex: 100 }}
+            className={`absolute right-[-2rem] top-1/2 transform -translate-y-1/2 ${
+              theme === "dark"
+                ? "bg-gray-200 text-black" // Light button for dark theme
+                : "bg-gray-800 text-white" // Dark button for light theme
+            } px-4 py-2 rounded-full shadow-lg`}
+          >
+            {isVisible ? (
+              <MessageSquareX className="size-5" />
+            ) : (
+              <BotMessageSquare className="size-5" />
+            )}
+          </Button>
 
-{/* 
-      <div
-        className={`fixed right-8 z-50 transition-all duration-300 ${
-          isVisible ? "bottom-8" : "bottom-8"
-        }`}
-      >
-        <Button
-          onClick={toggleChatbot} style={{ zIndex: 100 }}
-          className={`absolute ${
-            isVisible ? "-top-4 -right-4" : "-top-10 right-0"
-          } bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg`}
-        >
-          {isVisible ? (
-            <MessageSquareX className="size-5" />
-          ) : (
-            <BotMessageSquare className="size-5" />
-          )}
-        </Button> */}
-        {/* Chat Toggle Button */}
-        <Button
-          onClick={toggleChatbot}
-          style={{ zIndex: 100 }}
-          className={`absolute ${
-            isVisible ? "-top-4 -right-4" : "-top-4 right-4"
-          } ${
-            theme === "dark"
-              ? "bg-gray-200 text-black" // Light button for dark theme
-              : "bg-gray-800 text-white" // Dark button for light theme
-          } px-4 py-2 rounded-full shadow-lg`}
-        >
-          {isVisible ? (
-            <MessageSquareX className="size-5" />
-          ) : (
-            <BotMessageSquare className="size-5" />
-          )}
-        </Button>
-
-        {isVisible && (
-          <Accordion type="single" collapsible className="relative z-40 flex">
-            <AccordionItem
-              value="item-1"
-              className="w-80 rounded-md border bg-background"
-            >
-              {/* Accordion Trigger with Reverse Theme */}
-              <AccordionTrigger
-                className={`border-b px-6 py-2 font-semibold ${
-                  theme === "dark"
-                    ? "bg-gray-200 text-white" // Dark background and light text for dark theme
-                    : "bg-gray-800 text-black" // Light background and dark text for light theme
-                }`}
+          {isVisible && (
+            <Accordion type="single" collapsible className="relative z-40 flex">
+              <AccordionItem
+                value="item-1"
+                className="w-80 rounded-md border bg-background"
               >
-                <ChatHeader />
-              </AccordionTrigger>
-              <AccordionContent className="flex max-h-96 min-h-80 flex-col justify-between p-0">
-                <ChatMessages
-                  messages={messages}
-                  error={error}
-                  isLoading={isLoading}
-                />
-                <ChatInput
-                  input={input}
-                  handleSubmit={handleSubmit}
-                  handleInputChange={handleInputChange}
-                  setMessages={
-                    setMessages as React.Dispatch<
-                      React.SetStateAction<Message[]>
-                    >
-                  }
-                  isLoading={isLoading}
-                  messages={messages}
-                />
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        )}
+                {/* Accordion Trigger with Reverse Theme */}
+                <AccordionTrigger
+                  className={`border-b px-6 py-2 font-semibold ${
+                    theme === "dark"
+                      ? "bg-gray-600 text-white" // Dark background and light text for dark theme
+                      : "bg-gray-400 text-black" // Light background and dark text for light theme
+                  }`}
+                >
+                  <ChatHeader />
+                </AccordionTrigger>
+                <AccordionContent className="flex max-h-96 min-h-80 flex-col justify-between p-0">
+                  <ChatMessages
+                    messages={messages}
+                    error={error}
+                    isLoading={isLoading}
+                  />
+                  <ChatInput
+                    input={input}
+                    handleSubmit={handleSubmit}
+                    handleInputChange={handleInputChange}
+                    setMessages={
+                      setMessages as React.Dispatch<
+                        React.SetStateAction<Message[]>
+                      >
+                    }
+                    isLoading={isLoading}
+                    messages={messages}
+                  />
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          )}
+        </div>
       </div>
     </>
   );
