@@ -40,28 +40,27 @@ export default function Chat() {
           isVisible ? "bottom-8" : "bottom-8"
         }`}
       >
-        <Accordion type="single" collapsible className="relative z-40 flex">
-          <AccordionItem
-            value="item-1"
-            className="w-80 rounded-md border bg-background"
-          >
-            {/* Accordion Trigger with Toggle Button */}
-            <AccordionTrigger className="border-b px-6 flex items-center justify-between">
-              <ChatHeader />
-              <Button
-                onClick={toggleChatbot}
-                className="bg-blue-500 text-white px-2 py-1 rounded-full shadow-md"
-              >
-                {isVisible ? (
-                  <MessageSquareX className="size-5" />
-                ) : (
-                  <BotMessageSquare className="size-5" />
-                )}
-              </Button>
-            </AccordionTrigger>
+        {/* Chat Toggle Button */}
+        <Button
+          onClick={toggleChatbot}
+          className="absolute -top-10 right-0 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg"
+        >
+          {isVisible ? (
+            <MessageSquareX className="size-5" />
+          ) : (
+            <BotMessageSquare className="size-5" />
+          )}
+        </Button>
 
-            {/* Accordion Content */}
-            {isVisible && (
+        {isVisible && (
+          <Accordion type="single" collapsible className="relative z-40 flex">
+            <AccordionItem
+              value="item-1"
+              className="w-80 rounded-md border bg-background"
+            >
+              <AccordionTrigger className="border-b px-6">
+                <ChatHeader />
+              </AccordionTrigger>
               <AccordionContent className="flex max-h-96 min-h-80 flex-col justify-between p-0">
                 <ChatMessages
                   messages={messages}
@@ -81,9 +80,9 @@ export default function Chat() {
                   messages={messages}
                 />
               </AccordionContent>
-            )}
-          </AccordionItem>
-        </Accordion>
+            </AccordionItem>
+          </Accordion>
+        )}
       </div>
     </>
   );
