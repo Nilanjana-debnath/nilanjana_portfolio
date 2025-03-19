@@ -86,7 +86,7 @@ export async function POST(req: Request) {
     Your responses must:
     1. Be specific and answer only the user's question. Be professional while responsing.
     2. Avoid including unrelated information.
-    3. Detailed but concise - Provide meaningful information without being overwhelming
+    3. Short crisp and consise responses is expected.
     4. Use markdown links only when explicitly relevant.
 
     Rules:
