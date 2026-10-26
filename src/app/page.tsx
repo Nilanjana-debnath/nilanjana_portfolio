@@ -48,11 +48,12 @@ export default async function Home() {
               problems using cutting-edge technologies.
             </p>
 
-            {/* Chatbot Prompt */}
+            {/* Chatbot Prompt
             <div className="mt-4 flex items-center justify-center md:justify-start gap-1">
               <p className="font-semibold">Ask the chatbot anything about me</p>
               <ArrowDownRight className="size-5 animate-bounce" />
             </div>
+            */}
 
             {/* Call-to-Action Buttons */}
             <section className="mt-8 flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8">
@@ -73,7 +74,7 @@ export default async function Home() {
        {/* <Skills />  */}
       {/* Add the Skills component here  */}
 
-      {/* Featured Skills Section */}
+      {/* Featured Skills Section
       <section className="flex flex-col gap-8">
         <div className="flex justify-between">
           <h2 className="title text-2xl sm:text-3xl">Skills</h2>
@@ -86,6 +87,7 @@ export default async function Home() {
         </div>
         <Skills />
       </section>
+      */}
 
 
       {/* Featured Projects Section */}

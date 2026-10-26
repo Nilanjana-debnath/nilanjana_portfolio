@@ -9,7 +9,7 @@ import { useTheme } from "next-themes"; // Import useTheme for theme detection
 
 const navLinks = [
   { name: "Home", href: "/", icon: Home },
-  { name: "Skills", href: "/skills", icon: Boxes },
+//   { name: "Skills", href: "/skills", icon: Boxes },
   { name: "Projects", href: "/projects", icon: Briefcase },
   { name: "Contact", href: "/contact", icon: Contact },
 ];
