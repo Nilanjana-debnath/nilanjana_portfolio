@@ -12,7 +12,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@datastax/astra-db-ts": "^1.4.1",
     "@google/generative-ai": "^0.24.0",
     "@hookform/resolvers": "^4.1.2",
     "@langchain/community": "^0.3.1",
