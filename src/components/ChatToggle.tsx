@@ -9,7 +9,7 @@ export default function ChatToggle() {
 
   return (
     <Button size="icon" variant="ghost" onClick={toggleChatbot}>
-      {isVisible ? <BotOff className="size-5" /> : <BotOff className="size-5" />}
+      {isVisible ? <Bot className="size-5" /> : <BotOff className="size-5" />}
       <span className="sr-only">Chat Toggle</span>
     </Button>
   );
